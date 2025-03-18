@@ -1,0 +1,9 @@
+<% content_for :title, "New Transaction" %>
+
+<h1>New Transaction</h1>
+
+<%= render "form", entry: @entry %>
+
+<div class="mt-3">
+  <%= link_to "Back to Transactions", entries_path, class: "btn btn-secondary" %>
+</div>

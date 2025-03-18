@@ -1,0 +1,12 @@
+<div class="balance-overview d-flex justify-content-between align-items-center">
+  <!-- Income e Expenses no canto superior esquerdo -->
+  <div class="income-expense">
+    <p class="text-success mb-0">Income: <strong><%= @total_income %>€</strong></p>
+    <p class="text-danger mb-0">Expenses: <strong><%= @total_expense %>€</strong></p>
+  </div>
+
+  <!-- Balance Total no canto superior direito -->
+  <div class="total-balance text-end">
+    <p class="text-primary mb-0">Net Balance: <strong><%= @balance %>€</strong></p>
+  </div>
+</div>

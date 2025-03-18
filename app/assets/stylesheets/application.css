@@ -1,0 +1,108 @@
+@import "bootstrap";
+
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+ .title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .transaction-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+
+  .transaction-box{
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .balance-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+  }
+  
+  .balance-container .card {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+
+  .transaction-card {
+    width: 200px; /* Largura fixa para os cartões */
+    height: 120px; /* Altura fixa para os cartões */
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centraliza o texto */
+  }
+  .transaction-card p {
+    margin: 0.5rem 0;
+  }
+
+  /* Contêiner para o balance geral */
+.balance-overview {
+    display: flex;
+    justify-content: space-between; /* Income/Expenses à esquerda e Balance à direita */
+    align-items: center;
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #f8f9fa; /* Fundo claro */
+    border-bottom: 1px solid #ddd; /* Linha separadora */
+    position: sticky; /* Fixa no topo ao rolar a página */
+    top: 0;
+    z-index: 10;
+  }
+  
+  /* Income e Expenses */
+  .income-expense p {
+    margin: 0; /* Remove margens */
+    font-size: 1rem; /* Tamanho do texto */
+  }
+  
+  /* Balance Total */
+  .total-balance p {
+    margin: 0; /* Remove margens */
+    font-size: 1.2rem; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+  }
+
+  /* Remove o sublinhado e preserve o estilo das caixas */
+.transaction-card-link {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Herda a cor do conteúdo interno */
+}
+  
+.transaction-card-link:hover .transaction-card {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+    transition: transform 0.2s ease-in-out;
+}

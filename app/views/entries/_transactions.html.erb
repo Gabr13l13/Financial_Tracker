@@ -1,0 +1,19 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <% if entries.any? %>
+      <div class="transaction-container d-flex flex-wrap gap-3">
+        <% entries.each do |entry| %>
+          <%= link_to entry_path(entry), class: "transaction-card-link" do %>
+            <div class="transaction-card p-3 shadow-sm <%= entry.transaction_type == 'income' ? 'bg-success text-white' : 'bg-danger text-white' %>">
+              <strong><%= entry.transaction_type.capitalize %></strong>
+              <p class="mb-0">Amount: <%= entry.amount %>€</p>
+              <p class="mb-0">Date: <%= entry.date %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-center text-muted">No Transactions found. Start by adding a new Transaction!</p>
+    <% end %>
+  </div>
+</div>

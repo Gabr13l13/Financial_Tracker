@@ -1,0 +1,12 @@
+<% content_for :title, "Editing Transaction" %>
+
+<h1>Editing Transaction</h1>
+
+<%= render "form", entry: @entry %>
+
+<br>
+
+<div>
+  <%= link_to "Show this Transaction", @entry %> |
+  <%= link_to "Back to Transactions", entries_path %>
+</div>

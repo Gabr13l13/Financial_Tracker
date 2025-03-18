@@ -1,0 +1,24 @@
+<% content_for :title, "Financial Tracker" %>
+
+<div class="container title-container">
+  <h1 class="text-primary mb-4">Financial Tracker</h1>
+  <h2 class="text-secondary">Your Transactions</h2>
+</div>
+
+<!-- Balance Parcial -->
+<%= render "balance" %>
+
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success text-center">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <!-- Transactions Parcial -->
+  <%= render "transactions", entries: @entries %>
+
+  <div class="text-center mt-4">
+    <%= link_to "Add New Transaction", new_entry_path, class: "btn btn-success btn-lg" %>
+  </div>
+</div>
