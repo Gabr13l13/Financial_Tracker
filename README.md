@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a basic Financial Tracker developed in Ruby on Rails and HTML.
 
-Things you may want to cover:
+To start it, just insert "rails server" in the terminal and it will open the localhost (port 3000)
 
-* Ruby version
+It allowed me to learn about Ruby, since this was my first contact with it. Also, this project's frontend is weak because it was not my focus. I'm not very good at developing stuff in a creative way, since I prefer to develop more in a rational way. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Thanks for reading.
