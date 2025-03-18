@@ -4,8 +4,21 @@ class EntriesController < ApplicationController
   # GET /entries or /entries.json
   def index
     @entries = Entry.all
-    @total_income = @entries.where(transaction_type: "income").sum(:amount)
-    @total_expense = @entries.where(transaction_type: "expense").sum(:amount)
+
+    if params[:category].present?
+      @entries = @entries.where(category: params[:category])
+    end
+
+    if params[:start_date].present?
+      @entries = @entries.where('date >= ?', params[:start_date])
+    end
+
+    if params[:end_date].present?
+      @entries = @entries.where('date <= ?', params[:end_date])
+    end
+
+    @total_income = @entries.where(transaction_type: 'income').sum(:amount)
+    @total_expense = @entries.where(transaction_type: 'expense').sum(:amount)
     @balance = @total_income - @total_expense
   end
 
@@ -28,10 +41,10 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: "Transaction was successfully added." }
+        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -41,10 +54,10 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to @entry, notice: "Transaction was successfully updated." }
+        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -54,20 +67,19 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_path, notice: "Transaction was successfully deleted." }
+      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_entry
+      @entry = Entry.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_entry
-    @entry = Entry.find(params[:id]) # Corrigido para usar params[:id]
-  end
-
-  # Only allow a list of trusted parameters through.
-  def entry_params
-    params.require(:entry).permit(:user_nif, :transaction_type, :amount, :category, :date, :description)
-  end
+    # Only allow a list of trusted parameters through.
+    def entry_params
+      params.require(:entry).permit(:user_nif, :transaction_type, :amount, :category, :date, :description)
+    end
 end

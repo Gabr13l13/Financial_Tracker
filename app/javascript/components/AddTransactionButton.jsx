@@ -1,4 +1,5 @@
 import React from 'react';
+import 'javascript/components/AddTransactionButton.css';
 
 const AddTransactionButton = () => {
   const handleClick = () => {
@@ -6,7 +7,7 @@ const AddTransactionButton = () => {
   };
 
   return (
-    <button onClick={handleClick} className="btn btn-success btn-lg">
+    <button onClick={handleClick} className="btn btn-success btn-lg add-transaction-button">
       Add New Transaction
     </button>
   );

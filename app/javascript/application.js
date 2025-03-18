@@ -15,3 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<AddTransactionButton />, addTransactionButton);
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const transactionDetails = document.getElementById('transaction-details');
+    if (transactionDetails) {
+      const entry = JSON.parse(transactionDetails.dataset.entry);
+      ReactDOM.render(<TransactionDetails entry={entry} />, transactionDetails);
+    }
+  });

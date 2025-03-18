@@ -15,10 +15,39 @@
     </div>
   <% end %>
 
+  <!-- Filter Form -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <%= form_with url: entries_path, method: :get, local: true do %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag :category, "Category" %>
+            <%= text_field_tag :category, params[:category], class: "form-control" %>
+          </div>
+          <div class="col-md-4">
+            <%= label_tag :start_date, "Start Date" %>
+            <%= date_field_tag :start_date, params[:start_date], class: "form-control" %>
+          </div>
+          <div class="col-md-4">
+            <%= label_tag :end_date, "End Date" %>
+            <%= date_field_tag :end_date, params[:end_date], class: "form-control" %>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-center">
+            <%= submit_tag "Filter", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <!-- Transactions Parcial -->
   <%= render "transactions", entries: @entries %>
-
+  <br>
   <div class="text-center mt-4">
-    <%= link_to "Add New Transaction", new_entry_path, class: "btn btn-success btn-lg" %>
+    <button onclick="window.location.href='<%= new_entry_path %>'" class="btn btn-success btn-lg">
+      Add New Transaction
+    </button>
   </div>
 </div>
